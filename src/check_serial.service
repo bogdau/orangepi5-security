@@ -1,0 +1,15 @@
+[Unit]
+Description=Critical environment check
+DefaultDependencies=no
+Requires=basic.target
+After=network.target
+Before=multi-user.target
+OnFailure=emergency.target
+
+[Service]
+Type=oneshot
+ExecStart=/etc/check_serial.sh
+RemainAfterExit=no
+
+[Install]
+WantedBy=multi-user.target

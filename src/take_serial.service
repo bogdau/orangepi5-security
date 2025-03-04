@@ -1,0 +1,13 @@
+[Unit]
+Description=Take in the first boot serial number
+After=sysinit.target
+ConditionPathExists=!/var/lib/firstboot_marker
+
+[Service]
+ExecStart=/bin/bash -c "cat_serial.sh | awk '{print $3}' | sha256sum >> /etc/chip_serial.conf"
+ExecStartPost=/bin/bash -c "touch /var/lib/firstboot_marker"
+RemainAfterExit=true
+Type=oneshot
+
+[Install]
+WantedBy=multi-user.target
