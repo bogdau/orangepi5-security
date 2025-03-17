@@ -1,24 +1,8 @@
 # orangepi5-security
 
-### Instruction 
+### Instruction how to build Docker file
 
-You need to place the image of "Orange Pi 5"(debian) in the folder: 
-
-``` sh 
-├── README.md
-├── orangepi.img
-├── src
-│   ├── check_serial.service
-│   ├── check_serial.sh
-│   └── take_serial.service
-└── update_img.sh
+```sh
+docker build -t yocto-build .
+docker run -it --rm yocto-build
 ```
-> !!! the name should be only orangepi.img !!!
-
-After that start the script 
-
-``` bash 
-./update_img.sh
-```
-
-As a result, you will see an image with the name "orangepi_ready_made.img"
